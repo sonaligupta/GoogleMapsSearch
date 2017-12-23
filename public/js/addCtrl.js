@@ -1,9 +1,9 @@
 // Creates the addCtrl Module and Controller. Note that it depends on the 'geolocation' and 'gservice' modules and controllers.
 
 
-var addCtrl = angular.module('addCtrl', ['geolocation', 'gservice']);
+var addCtrl = angular.module('addCtrl', ['gservice']);
 
-addCtrl.controller('addCtrl', function($scope, $http, $rootScope, geolocation, gservice){
+addCtrl.controller('addCtrl', function($scope, $http, $rootScope, gservice){
 
 
 
@@ -23,21 +23,21 @@ addCtrl.controller('addCtrl', function($scope, $http, $rootScope, geolocation, g
 
 
 
-    geolocation.getLocation().then(function(data){
-
-        // Set the latitude and longitude equal to the HTML5 coordinates
-        coords = {lat:data.coords.latitude, long:data.coords.longitude};
-
-        // Display coordinates in location textboxes rounded to three decimal points
-        $scope.formData.longitude = parseFloat(coords.long).toFixed(3);
-        $scope.formData.latitude = parseFloat(coords.lat).toFixed(3);
-
-        // Display message confirming that the coordinates verified.
-        $scope.formData.htmlverified = "Yep (Thanks for giving us real data!)";
-
-        gservice.refresh($scope.formData.latitude, $scope.formData.longitude);
-
-    });
+    // geolocation.getLocation().then(function(data){
+    //
+    //     // Set the latitude and longitude equal to the HTML5 coordinates
+    //     coords = {lat:data.coords.latitude, long:data.coords.longitude};
+    //
+    //     // Display coordinates in location textboxes rounded to three decimal points
+    //     $scope.formData.longitude = parseFloat(coords.long).toFixed(3);
+    //     $scope.formData.latitude = parseFloat(coords.lat).toFixed(3);
+    //
+    //     // Display message confirming that the coordinates verified.
+    //     $scope.formData.htmlverified = "Yep (Thanks for giving us real data!)";
+    //
+    //     gservice.refresh($scope.formData.latitude, $scope.formData.longitude);
+    //
+    // });
 
 
     // Creates a new user based on the form fields
